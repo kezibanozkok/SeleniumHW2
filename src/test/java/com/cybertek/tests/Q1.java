@@ -4,6 +4,7 @@ import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -44,8 +45,10 @@ public class Q1 {
         WebElement dateOfBirth = driver.findElement(By.name("birthday"));
         dateOfBirth.sendKeys("wrong_dob");
 
+        WebElement errorMessage = driver.findElement(By.xpath("//input[@name='birthday']/following-sibling::small[2]"));
+        String actualMessage = errorMessage.getText();
 
+        Assert.assertEquals(actualMessage, "The date of birth is not valid", "Verify failed");
 
     }
-
 }
