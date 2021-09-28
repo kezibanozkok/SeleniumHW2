@@ -51,4 +51,10 @@ public class Q1 {
         Assert.assertEquals(actualMessage, "The date of birth is not valid", "Verify failed");
 
     }
+
+    @Test
+    public void test3(){
+
+        driver.findElement(By.name())
+    }
 }
