@@ -54,11 +54,11 @@ public class Q1_5 {
     }
       /*
     Test case #3
-Step 1. Go to “https://practicecybertekschool.herokuapp.com”
-Step 2. Click on “Registration Form”
-Step 3. Enter only one alphabetic character into first name input box.
-Step 4. Verify that warning message is displayed:
-“first name must be more than 2 and less than 64 characters long”
+    Step 1. Go to “https://practicecybertekschool.herokuapp.com”
+    Step 2. Click on “Registration Form”
+    Step 3. Enter only one alphabetic character into first name input box.
+    Step 4. Verify that warning message is displayed:
+    “first name must be more than 2 and less than 64 characters long”
      */
 
     @Test
