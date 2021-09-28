@@ -9,7 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Q1 {
+public class Q1_5 {
 
     /*
 
@@ -25,6 +25,12 @@ public class Q1 {
     public void setUp() {
         driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
+        //Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+        driver.get("https://practice-cybertekschool.herokuapp.com");
+
+        //Step 2. Click on “Registration Form”
+        WebElement registrationFormLink = driver.findElement(By.xpath("//a[.= 'Registration Form']"));
+        registrationFormLink.click();
     }
 
     @AfterMethod
@@ -34,12 +40,7 @@ public class Q1 {
 
     @Test
     public void test1() {
-        //Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
-        driver.get("https://practice-cybertekschool.herokuapp.com");
 
-        //Step 2. Click on “Registration Form”
-        WebElement registrationFormLink = driver.findElement(By.xpath("//a[.= 'Registration Form']"));
-        registrationFormLink.click();
 
         //Step 3. Enter “wrong_dob” into date of birth input box.
         WebElement dateOfBirth = driver.findElement(By.name("birthday"));
@@ -49,6 +50,25 @@ public class Q1 {
         String actualMessage = errorMessage.getText();
 
         Assert.assertEquals(actualMessage, "The date of birth is not valid", "Verify failed");
+
+    }
+      /*
+    Test case #3
+Step 1. Go to “https://practicecybertekschool.herokuapp.com”
+Step 2. Click on “Registration Form”
+Step 3. Enter only one alphabetic character into first name input box.
+Step 4. Verify that warning message is displayed:
+“first name must be more than 2 and less than 64 characters long”
+     */
+
+    @Test
+    public void test3(){
+        driver.findElement(By.name("firstname")).sendKeys("a");
+
+        String expectedMessage = "first name must be more than 2 and less than 64 characters long";
+        String actualMessage = driver.findElement(By.xpath("//small[@data-bv-for='firstname'][2]")).getText();
+
+        Assert.assertEquals(actualMessage,expectedMessage,"warning messages are not as expected");
 
     }
 }
