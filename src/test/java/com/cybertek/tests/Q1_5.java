@@ -67,7 +67,7 @@ public class Q1_5 {
 
         String expectedMessage = "first name must be more than 2 and less than 64 characters long";
         String actualMessage = driver.findElement(By.xpath("//small[@data-bv-for='firstname'][2]")).getText();
-
+        //Step 4. Verify that warning message is displayed:
         Assert.assertEquals(actualMessage,expectedMessage,"warning messages are not as expected");
 
     }
