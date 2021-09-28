@@ -71,4 +71,22 @@ Step 4. Verify that warning message is displayed:
         Assert.assertEquals(actualMessage,expectedMessage,"warning messages are not as expected");
 
     }
+    /*
+    Test case #4
+    Step 1. Go to https://practice-cybertekschool.herokuapp.com
+       Step 2. Click on “Registration Form”
+       Step 3. Enter only one alphabetic character into last name input box.
+      Step 4. Verify that warning message is displayed: “The last name must be more than 2 and less than 64 characters long”
+     */
+    @Test
+    public void test4(){
+        driver.findElement(By.cssSelector("[name='lastname']")).sendKeys("A");
+        String expectedResult="The last name must be more than 2 and less than 64 characters long";
+
+        String actualResult = driver.findElement(By.xpath("(//small[@class='help-block'])[6]")).getText();
+        Assert.assertEquals(actualResult,expectedResult,"warning message is NOT displayed");
+
+
+    }
+
 }
